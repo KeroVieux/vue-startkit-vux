@@ -1,0 +1,29 @@
+/**
+ * Created by kerovieux on 2016/11/23.
+ */
+exports = module.exports = {
+  dev:{
+    apiUrl:'dev-url',
+    others:{
+      a:1,
+      b:2,
+      c:3
+    }
+  },
+  sit:{
+    apiUrl:'sit-url',
+    others:{
+      x:1,
+      y:2,
+      z:3
+    }
+  },
+  prd:{
+    apiUrl:'prd-url',
+    others:{
+      o:1,
+      p:2,
+      q:3
+    }
+  }
+}

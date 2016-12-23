@@ -1,0 +1,43 @@
+{
+  "name": "crp-startkit",
+  "description": "A Vue.js project",
+  "version": "1.0.0",
+  "author": "KeroVieux <308680@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev dev": "cross-env arg=dev webpack-dev-server --open --inline --hot",
+    "dev sit": "cross-env arg=sit webpack-dev-server --open --inline --hot",
+    "dev prd": "cross-env arg=prd webpack-dev-server --open --inline --hot",
+    "build dev": "cross-env mode=production arg=dev webpack --progress --hide-modules",
+    "build sit": "cross-env mode=production arg=sit webpack --progress --hide-modules",
+    "build prd": "cross-env mode=production arg=prd webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.2",
+    "mint-ui": "^2.0.6",
+    "moment": "^2.17.1",
+    "normalize.css": "^5.0.0",
+    "vee-validate": "^2.0.0-beta.18",
+    "vue": "^2.1.0",
+    "vue-router": "^2.1.1",
+    "vue2-animate": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "bourbon": "^4.2.7",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "jsdoc-vue": "^0.1.4",
+    "url-loader": "^0.5.7",
+    "vue-loader": "^10.0.0",
+    "vue-template-compiler": "^2.1.0",
+    "vuex": "^2.1.1",
+    "vuex-router-sync": "^4.0.1",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.9"
+  }
+}
