@@ -1,0 +1,252 @@
+body{
+    color: #2C3E50;
+    font-family: "Microsoft Yahei";
+    font-weight: bold
+}
+.header{
+    width: 100%;
+    height: 48px;
+}
+.search{
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-align: center;
+}
+.search > .fa-search{
+    position: absolute;
+    top: 16px;
+    left: 20px;
+}
+.data-container{
+    border: 1px solid;
+    border-color: rgb(187,187,187);
+    background: #fff;
+    line-height: 20px;
+}
+.top-right-tx{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+.inline{
+    display: inline-block;
+    width: 32.5%;
+    text-align: center;
+}
+.data-table{
+    width: 100%;
+}
+.data-table td{
+    width: 22%;
+    border: 1px solid #2C3E50;
+    text-align: center;
+}
+.po-rel{
+    position: relative;
+}
+.total-charts{
+    width: 100%;
+    min-height: 300px;
+}
+.pie-chart-mask{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 350px;
+    z-index: 99
+}
+.btn{
+    background: #2C3E50;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.btn:active{
+    background: #1A242F;
+}
+#spread{
+    height: 400px;
+}
+.machineRunTable{
+    margin-top: 10px;
+    background: #fff;
+}
+.machineRunTable table {
+    width: 100%;
+}
+.machineRunTable > table td{
+    text-align: center;
+}
+.t-head{
+    font-size: 12px;
+    border: 1px solid #2C3E50;
+    overflow: hidden
+}
+.t-head-second{
+    width: 12%;
+}
+.t-head tr ,.t-head-col{
+    display: block;
+}
+.t-head-col{
+    padding: 4px 0;
+    border-bottom: 1px solid #2C3E50;
+}
+.t-head-sec{
+    display: inline-block;
+    width: 45%;
+    padding: 4px 0;
+}
+.t-head-sec:first-child{
+    border-right: 1px solid #2C3E50;
+}
+.td-hide-top{
+    border-bottom: none;
+    padding-top: 10px
+}
+.td-hide-bot{
+    border-top: none;
+}
+.elect-increase {
+    color: #fff;
+    background: #00C49E
+}
+.elect-decrease {
+    color: #fff;
+    background: #FF9A00
+}
+.notCenterBtn{
+    background: #2C3E50;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.notCenterBtn:active {
+    background: #1A242F;
+}
+.btn-pos{
+    position: absolute;
+    top: -4px;
+    right: 5px;
+}
+.empty-data {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 300px;
+    padding-top: 50px
+}
+table td{
+    height: 30px;
+    border: 1px solid #2C3E50;
+}
+
+/* width css start */
+.w-76 {
+    width: 76px;
+}
+.w-78 {
+    width: 78px;
+}
+.w-80 {
+    width: 80px;
+}
+.w-105{
+    width: 105px;
+}
+.w-150{
+    width: 150px;
+}
+.w-200{
+    width: 200px;
+}
+/* width css end */
+
+/* height css start */
+.h-30{
+    height: 30px;
+    /*line-height: 40px*/
+}
+.h-40{
+    height: 40px;
+}
+/* height css end */
+
+/* padding css start */
+.p-2{
+    padding: 2px
+}
+.p-8{
+    padding: 8px
+}
+.p-t-8{
+    padding-top: 8px;
+}
+.p-t-12{
+    padding-top: 12px;    
+}
+.p-b-8{
+    padding-bottom: 8px;
+}
+/* padding css end */
+
+
+/* margin css start */
+
+/* margin css end */
+
+
+/* background color start */
+.bg-deep-blue{
+    background: #2C3E50
+}
+.bg-light-blue{
+    background: rgb(120,144,156)
+}
+.bg-light-gray{
+    background: rgb(240,240,240)
+}
+/* background color end */
+
+
+/* border css start */
+.bor-t-com{
+    border-top: 1px solid #bbb;
+}
+.bor-b-com{
+    border-bottom: 1px solid #bbb;
+}
+.bor-b-deepBlue{
+    border-bottom: 1px solid #2C3E50;
+}
+/* border css end */
+
+.c-lightGray {
+    color: #666;
+}
+.c-deepBlue {
+    color: #2C3E50 !important;
+}
+
+.tx-c{
+    text-align: center !important;
+}
+
+.tx-r{
+    text-align: right !important;
+}
+
+.fz-17 {
+    font-size: 17px
+}
