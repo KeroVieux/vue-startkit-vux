@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: 'dist/',
     filename: 'build.js'
   },
   module: {
@@ -106,7 +106,7 @@ if (process.env.mode === 'production') {
     })
   ])
 }else {
-  console.warn('you are stay in the developing mode , it will not compress any code .')
+  console.log('you are staying in the developing mode , it will not compress any code .')
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {

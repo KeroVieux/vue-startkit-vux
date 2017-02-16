@@ -11,10 +11,9 @@
   </div>
 </template>
 <script type="text/babel">
-
   export default{
     components: {
-      
+
     },
     data(){
       return {
@@ -29,11 +28,11 @@
       pageTitle() {
         this.pathName = store.state.route.name
         switch (this.pathName) {
-        case 'Results':
-          return '发送结果'
-          break
-        default:
-          return '发送消息'
+          case 'Results':
+            return '发送结果'
+            break
+          default:
+            return '发送消息'
         }
       }
     },
@@ -46,7 +45,7 @@
       }
     },
     created() {
-      
+
     }
   }
 </script>

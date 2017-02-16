@@ -1,9 +1,9 @@
-/**
- * Created by kerovieux on 2016/11/23.
- */
 exports = module.exports = {
   dev:{
-    apiUrl:'dev-url',
+    testingMode:true,
+    env:'dev',
+    apiUrl:'http://xxx',
+    contextPatch:'',
     others:{
       a:1,
       b:2,
@@ -11,7 +11,9 @@ exports = module.exports = {
     }
   },
   sit:{
-    apiUrl:'sit-url',
+    env:'sit',
+    apiUrl:'http://xxx',
+    contextPatch:'',
     others:{
       x:1,
       y:2,
@@ -19,11 +21,23 @@ exports = module.exports = {
     }
   },
   prd:{
-    apiUrl:'prd-url',
+    env:'prd',
+    apiUrl:'http://xxx',
+    contextPatch:'',
     others:{
-      o:1,
-      p:2,
-      q:3
+      x:1,
+      y:2,
+      z:3
+    }
+  },
+  uat:{
+    env:'uat',
+    apiUrl:'http://xxx',
+    contextPatch:'',
+    others:{
+      x:1,
+      y:2,
+      z:3
     }
   }
 }
