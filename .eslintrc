@@ -5,6 +5,7 @@
     "node": true
   },
   "extends": "airbnb-base",
+  "plugins": ["vue"],
   "rules": {
     "semi": [2, "never"],
     "arrow-body-style": ["error", "always"],

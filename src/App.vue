@@ -24,18 +24,17 @@
   export default {
     name: 'app',
     components: {
-      PageHeader
+      PageHeader,
     },
-    data () {
+    data() {
       return {
-        msg: 'Welcome to Your Vue.js App '
+        msg: 'gogogo',
       }
     },
     created() {
       this.comment().then((res) => {
         console.log('test api', res)
-      });
-      var ac =" "
+      })
     },
     mixins: [ApiMixin],
   }

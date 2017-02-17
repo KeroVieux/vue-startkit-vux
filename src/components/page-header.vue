@@ -15,37 +15,33 @@
     components: {
 
     },
-    data(){
+    data() {
       return {
-        pageTitle:'顶部组件',
-        pathName:null
+        pageTitle: '顶部组件',
+        pathName: null,
       }
     },
     computed: {
       currentPath() {
-        return store.state.route.path
+        return window.store.state.route.path
       },
       pageTitle() {
-        this.pathName = store.state.route.name
+        this.pathName = window.store.state.route.name
         switch (this.pathName) {
           case 'Bar':
             return 'Bar'
-            break
           default:
             return '顶部组件'
         }
-      }
+      },
     },
     methods: {
       closeApp() {
-        location.href = "xmppapi:localservice?closeWindow"
+        location.href = 'xmppapi:localservice?closeWindow'
       },
       handleBack() {
         history.back()
-      }
+      },
     },
-    created() {
-
-    }
   }
 </script>
