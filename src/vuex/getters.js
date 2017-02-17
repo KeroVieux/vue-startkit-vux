@@ -7,5 +7,5 @@ export default {
    * @param state - from vuex/state
    * @example let state = store.getters.temporaryData
    */
-  temporaryData: state => state.temporaryData
+  temporaryData: (state) => { return state.temporaryData },
 }

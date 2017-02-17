@@ -3,8 +3,10 @@
     <PageHeader></PageHeader>
     <div class="p-t-30"></div>
     <div class="p-t-20"></div>
-    <img src="./assets/logo.png">
+    <img src="./assets/logo.jpg" />
     <h1>{{ msg }}</h1>
+    <p><router-link to="bar">go to bar</router-link></p>
+    <p><router-link to="foo">go to foo</router-link></p>
     <transition name="fade-fast">
       <router-view></router-view>
     </transition>
@@ -17,6 +19,8 @@
 </style>
 <script type="text/babel">
   import PageHeader from './components/page-header.vue'
+  import ApiMixin from './assets/js/apis-mixins'
+
   export default {
     name: 'app',
     components: {
@@ -24,8 +28,15 @@
     },
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App '
       }
-    }
+    },
+    created() {
+      this.comment().then((res) => {
+        console.log('test api', res)
+      });
+      var ac =" "
+    },
+    mixins: [ApiMixin],
   }
 </script>

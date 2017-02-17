@@ -8,7 +8,7 @@ export default {
    * @param {object} newSet
    * @example store.dispatch('temporaryData',object)
    */
-  temporaryData ({ commit }, newSet) {
+  temporaryData({ commit }, newSet) {
     commit('temporaryData', newSet)
-  }
+  },
 }

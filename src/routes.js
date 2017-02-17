@@ -4,8 +4,6 @@
 /**
  * The map for this entire project .
  * @module routes
- * @requires ./components/elements/error.vue
- * @requires ./components/elements/upload-panel.vue
  */
 import Foo from './components/foo.vue'
 import Bar from './components/bar.vue'
@@ -15,16 +13,16 @@ export default [
   {
     path: '/bar',
     component: Bar,
-    name:'Bar'
+    name: 'Bar',
   },
   {
     path: '/foo',
     component: Foo,
-    name:'Foo'
+    name: 'Foo',
   },
   {
     path: '*',
     component: PageError,
-    name:'PageError'
-  }
+    name: 'PageError',
+  },
 ]

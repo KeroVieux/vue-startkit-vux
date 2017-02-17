@@ -1,6 +1,8 @@
 # crp-startkit
 
-> A Vue.js project
+> 一个更新不及时的项目启动脚手架
+
+## 特点
 
 ## Build Setup
 

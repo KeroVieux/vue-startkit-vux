@@ -1,6 +1,7 @@
 /**
  * Created by PetitKero on 18/11/2016.
  */
+/* eslint-disable */
 export default {
   after: (field, [target]) => `必须在${target}之后`,
   alpha_dash: (field) => `能够包含字母数字字符，包括破折号、下划线`,

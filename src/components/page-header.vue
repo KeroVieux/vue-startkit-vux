@@ -17,7 +17,7 @@
     },
     data(){
       return {
-        pageTitle:'发送消息',
+        pageTitle:'顶部组件',
         pathName:null
       }
     },
@@ -28,11 +28,11 @@
       pageTitle() {
         this.pathName = store.state.route.name
         switch (this.pathName) {
-          case 'Results':
-            return '发送结果'
+          case 'Bar':
+            return 'Bar'
             break
           default:
-            return '发送消息'
+            return '顶部组件'
         }
       }
     },
