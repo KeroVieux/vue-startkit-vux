@@ -1,0 +1,32 @@
+@import "lib/mixin";
+@import "bourbon/bourbon";
+@import "neat/neat";
+$neat-grid: (
+  gutter: 12px,
+);
+.row{
+  @include grid-container;
+  $col:1;
+  @while $col <= 12{
+    .col-#{$col}{
+      @include grid-column($col);
+    }
+    .push-#{$col}{
+      @include grid-push($col);
+    }
+    $col: $col + 1;
+  }
+}
+.flex-container{
+  @include align-items(stretch);
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(flex-start);
+  $col:1;
+  @while $col <= 12{
+    .col-#{$col}{
+      @include flex($col);
+    }
+    $col: $col + 1;
+  }
+}

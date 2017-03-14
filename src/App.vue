@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <PageHeader></PageHeader>
+    <!--<PageHeader></PageHeader>-->
     <div class="p-t-30"></div>
     <div class="p-t-20"></div>
+    <group>
+      <cell title="title" value="value"></cell>
+    </group>
     <img src="./assets/logo.jpg" />
     <h1>{{ msg }}</h1>
     <p><router-link to="bar">go to bar</router-link></p>
@@ -13,11 +16,13 @@
   </div>
 </template>
 <style>
-  @import url('assets/css/theme.css');
-  @import url('assets/css/font-awesome/css/font-awesome.css');
-  @import url('assets/css/screen.css');
+  @import '../src/assets/sass/screen.css';
+</style>
+<style lang="less">
+  @import '~vux/src/styles/reset';
 </style>
 <script type="text/babel">
+  import { Group, Cell } from 'vux'
   import PageHeader from './components/page-header.vue'
   import ApiMixin from './assets/js/apis-mixins'
 
@@ -25,6 +30,8 @@
     name: 'app',
     components: {
       PageHeader,
+      Group,
+      Cell,
     },
     data() {
       return {

@@ -16,7 +16,6 @@ import axios from 'axios'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VeeValidate from 'vee-validate'
-import Mint from 'mint-ui'
 import Moment from 'moment'
 import { sync } from 'vuex-router-sync'
 import VeeValidateCn from './assets/js/validate-zh'
@@ -39,7 +38,6 @@ _.assign(window, {
   currentUser: null,
 })
 const vueInit = () => {
-  Vue.use(Mint)
   Vue.use(VueRouter)
   Vue.use(VeeValidate, {
     locale: 'zh_CN',

@@ -1,9 +1,10 @@
-var path = require('path')
-var webpack = require('webpack')
-var _ = require('lodash')
-var argConfig = require('./arguments.config.js')
+const path = require('path')
+const webpack = require('webpack')
+const _ = require('lodash')
+const vuxLoader = require('vux-loader')
+const argConfig = require('./arguments.config.js')
 
-module.exports = {
+const webpackConfig = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -31,6 +32,9 @@ module.exports = {
             sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
           },
           // other vue-loader options go here
+          plugins: [{
+            name: 'vux-ui'
+          }]
         },
       },
       {
@@ -59,6 +63,7 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.common.js',
     },
+    extensions: ['.js', '.vue', '.json'],
   },
   devServer: {
     historyApiFallback: true,
@@ -70,6 +75,19 @@ module.exports = {
   devtool: '#eval-source-map',
 }
 
+module.exports = vuxLoader.merge(webpackConfig, {
+  options: {},
+  plugins: [
+    {
+      name: 'vux-ui',
+    },
+    {
+      name: 'less-theme',
+      path: 'src/assets/less/theme.less'
+    }
+
+  ],
+})
 
 console.log('If you have anything confused , plz get in touch with me , bigboss@hidoge.cn')
 if (process.env.arg) {
