@@ -7,7 +7,8 @@
  */
 import Foo from './components/foo.vue'
 import Bar from './components/bar.vue'
-import PageError from './components/page-error.vue'
+import Index from './components/index.vue'
+import PageError from './components/common/page_error.vue'
 
 export default [
   {
@@ -19,6 +20,11 @@ export default [
     path: '/foo',
     component: Foo,
     name: 'Foo',
+  },
+  {
+    path: '/',
+    component: Index,
+    name: 'Index',
   },
   {
     path: '*',

@@ -1,24 +1,28 @@
 <template>
   <div>
-    <mt-header fixed :title="pageTitle">
-      <span slot="left">
-        <mt-button icon="back" @click.native="handleBack" v-show="currentPath !== '/'">返回</mt-button>
-        <span class="p-l-10" @click="closeApp" v-show="currentPath == '/'">
-          关闭
-        </span>
-      </span>
-    </mt-header>
+    <x-header :right-options="{showMore: true}" @on-click-more="showMenus = true" style="width:100%;position:fixed;left:0;top:0;z-index:100;">
+      开始开发
+    </x-header>
+    <actionsheet :menus="acMenus" v-model="showMenus" show-cancel></actionsheet>
   </div>
 </template>
 <script type="text/babel">
+  import { XHeader, Actionsheet } from 'vux'
+
   export default{
     components: {
-
+      XHeader,
+      Actionsheet,
     },
     data() {
       return {
         pageTitle: '顶部组件',
         pathName: null,
+        acMenus: {
+          menu1: 'Take Photo',
+          menu2: 'Choose from photos',
+        },
+        showMenus: false,
       }
     },
     computed: {

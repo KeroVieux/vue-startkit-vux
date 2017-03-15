@@ -1,15 +1,8 @@
 <template>
   <div id="app">
-    <!--<PageHeader></PageHeader>-->
+    <PageHeader></PageHeader>
     <div class="p-t-30"></div>
-    <div class="p-t-20"></div>
-    <group>
-      <cell title="title" value="value"></cell>
-    </group>
-    <img src="./assets/logo.jpg" />
-    <h1>{{ msg }}</h1>
-    <p><router-link to="bar">go to bar</router-link></p>
-    <p><router-link to="foo">go to foo</router-link></p>
+    <div class="p-t-10"></div>
     <transition name="fade-fast">
       <router-view></router-view>
     </transition>
@@ -23,25 +16,23 @@
   @import '~vux/src/styles/reset';
 </style>
 <script type="text/babel">
-  import { Group, Cell } from 'vux'
-  import PageHeader from './components/page-header.vue'
+  import PageHeader from './components/common/page_header.vue'
   import ApiMixin from './assets/js/apis-mixins'
 
   export default {
     name: 'app',
     components: {
       PageHeader,
-      Group,
-      Cell,
     },
     data() {
       return {
-        msg: 'gogogo',
+        data: null,
       }
     },
     created() {
       this.comment().then((res) => {
         console.log('test api', res)
+        this.data = res
       })
     },
     mixins: [ApiMixin],

@@ -5,7 +5,7 @@
   "author": "KeroVieux <308680@gmail.com>",
   "private": true,
   "scripts": {
-    "dev dev": "cross-env arg=dev webpack-dev-server --inline --hot",
+    "dev dev": "cross-env arg=dev webpack-dev-server --inline --hot --host=0.0.0.0",
     "dev sit": "cross-env arg=sit webpack-dev-server --inline --hot",
     "dev prd": "cross-env arg=prd webpack-dev-server --inline --hot",
     "build dev": "cross-env mode=production arg=dev webpack --progress --hide-modules",

@@ -25,6 +25,7 @@ html {
 html, body {
   min-height: 100vh;
   margin: 0;
+  background: #fbf9fe;
 }
 body{
   @include animated(fadeIn, 1000ms);
