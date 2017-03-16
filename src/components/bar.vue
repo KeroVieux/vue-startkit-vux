@@ -2,6 +2,12 @@
   <div>
     <div class="p-t-10"></div>
     <group>
+      <cell title="filter使用">
+        {{msg | trim('_-')}}
+      </cell>
+    </group>
+    <div class="p-t-10"></div>
+    <group>
       <cell :title="item.name" @click.native="onClick" v-for="item in data"></cell>
     </group>
     <div class="p-t-10"></div>
@@ -14,7 +20,10 @@
 <script type="text/babel">
   import { Cell, Group } from 'vux'
   import ApisMixins from '../assets/js/apis-mixins'
+  import FiltersMixins from '../assets/js/filters-mixins'
   import ChildComponent from './elements/child_component.vue'
+
+  const _ = require('lodash')
 
   export default{
     components: {
@@ -25,6 +34,7 @@
     data() {
       return {
         data: null,
+        msg: '-_-abc-_-',
       }
     },
     methods: {
@@ -37,11 +47,13 @@
       },
     },
     created() {
+      console.log('11', _.isNumber(NaN))
+      console.log('11', NaN + 1)
       this.comment().then((res) => {
         console.log('res', res)
         this.data = res
       })
     },
-    mixins: [ApisMixins],
+    mixins: [ApisMixins, FiltersMixins],
   }
 </script>

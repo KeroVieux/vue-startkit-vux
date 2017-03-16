@@ -3,12 +3,80 @@
  */
 
 /**
- * This provides mixins used for common filters in the Vue components. Before you begin to used it , plz inject this mixins in the components
+ * This provides mixins used for common filters in the Vue components.
+ * Before you begin to used it , plz inject this mixins in the components
  * like mixins: [FiltersMixin]
  *
  * @mixin
  */
+import Moment from 'moment'
+
+const _ = require('lodash')
+
 const FiltersMixin = {
+  add(value, addend = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.add(value, addend)
+  },
+  subtract(value, subtrahend = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.subtract(value, subtrahend)
+  },
+  multiply(value, multiplicand = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.multiply(value, multiplicand)
+  },
+  divide(value, divisor = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.divide(value, divisor)
+  },
+  floor(value, precision = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.floor(value, precision)
+  },
+  round(value, precision = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.round(value, precision)
+  },
+  ceil(value, precision = 0) {
+    if (!_.isNumber(value)) {
+      value = _.toNumber(value)
+    }
+    if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    return _.ceil(value, precision)
+  },
   /**
    * Timing formatter
    * @param {date} value - A timing need to formatted , whatever the org format looks like .
@@ -18,29 +86,69 @@ const FiltersMixin = {
    * @example
    * {{data.created_at | formatDate('l')}}
    */
-  formatDate(value, format) {
-    if (value) {
-      if (_.isDate(new Date(value))) {
-        return Moment(value).format(format)
-      } else {
-        return '日期错误'
-      }
-    } else {
-      return '无日期'
+  dateFormat(value, format) {
+    if (!_.isDate(new Date(value))) {
+      return '日期错误'
     }
+    return Moment(value).format(format)
+  },
+  dateCalendar(value) {
+    if (!_.isDate(new Date(value))) {
+      return '日期错误'
+    }
+    return Moment(value).calendar()
+  },
+  dateToNow(value) {
+    if (!_.isDate(new Date(value))) {
+      return '日期错误'
+    }
+    return Moment(value).toNow()
   },
   /**
    * Truncate
-   * @param {string} str - A long sentence need truncate .
+   * @param {string} value - A long sentence need truncate .
    * @param {object} options - The options object .
    * @returns {string}
    * @example
    * {{data.body | truncate({'length': 24, 'separator': /,? +/, 'omission': ' [...]'})}}
    */
-  truncate(str, options) {
-    return _.truncate(str,options)
+  truncate(value, options) {
+    if (!_.isString(value)) {
+      value = _.toString(value)
+    }
+    return _.truncate(value, options)
+  },
+  trim(value, chars = null) {
+    if (!_.isString(value)) {
+      value = _.toString(value)
+    }
+    if (!_.isString(chars)) {
+      value = _.toString(chars)
+    }
+    return _.trim(value, chars)
+  },
+  replace(value, pattern = null, replacement = null) {
+    if (!_.isString(value)) {
+      value = _.toString(value)
+    }
+    if (!_.isRegExp(pattern) && !_.isString(pattern)) {
+      return '错误的参数'
+    }
+    if (!_.isFunction(replacement) && !_.isString(replacement)) {
+      return '错误的参数'
+    }
+    return _.replace(value, pattern, replacement)
+  },
+  repeat(value, n = 1) {
+    if (!_.isNumber(n) || _.isNaN(n)) {
+      return '错误的参数'
+    }
+    if (!_.isString(value)) {
+      value = _.toString(value)
+    }
+    return _.repeat(value, n)
   },
 }
 export default {
-  filters:FiltersMixin
+  filters: FiltersMixin,
 }

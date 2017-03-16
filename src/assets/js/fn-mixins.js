@@ -8,6 +8,12 @@
 const _ = require('lodash')
 
 const fnMixin = {
+  replaceAll(str, search, replacement) {
+    return str.replace(new RegExp(search, 'g'), replacement)
+  },
+  goBack() {
+    history.back()
+  },
   /**
    * Get the query params from the URL
    * @returns {{}|*} like '123456789'
