@@ -8,6 +8,10 @@
 3. 使用axios作为ajax请求插件,使用方法没有什么特别的。。。
 5. vue-router和vuex已经集成在内
 6. 使用了vux作为ui框架,内置大量常用功能,请好好利用! [https://vux.li/](https://vux.li/)
+7. 已经在main.js中全局预先定义了api请求根目录
+7. 在api-mixins.js中使用了async await , 并且做了错误处理
+8. 在index中的九宫格,有几个基础事件的例子
+9. router的组件定义,全部使用异步加载组件
 
 ## 开始开发
 1. 根目录下执行 yarn install

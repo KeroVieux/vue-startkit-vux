@@ -14,6 +14,7 @@
 // /* eslint-disable */
 import axios from 'axios'
 import Vue from 'vue'
+import { ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin } from 'vux'
 import VueRouter from 'vue-router'
 import VeeValidate from 'vee-validate'
 import Moment from 'moment'
@@ -28,6 +29,7 @@ import App from './App.vue'
 const _ = require('lodash')
 
 Moment.locale('zh-CN')
+
 _.assign(window, {
   Vue,
   store,
@@ -39,6 +41,10 @@ _.assign(window, {
 })
 const vueInit = () => {
   Vue.use(VueRouter)
+  Vue.use(ToastPlugin)
+  Vue.use(AlertPlugin)
+  Vue.use(ConfirmPlugin)
+  Vue.use(LoadingPlugin)
   Vue.use(VeeValidate, {
     locale: 'zh_CN',
     dictionary: {
@@ -48,6 +54,7 @@ const vueInit = () => {
     },
   })
 
+  axios.defaults.baseURL = 'http://azu.github.io/promises-book/json'
   // axios.defaults.baseURL = globalArg.apiUrl
   // axios.defaults.headers.common['authorization'] = window.userToken || ''
   const router = new VueRouter({

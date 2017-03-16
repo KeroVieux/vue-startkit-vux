@@ -10,6 +10,8 @@
     "semi": [2, "never"],
     "arrow-body-style": ["error", "always"],
     "operator-assignment": [0, "never"],
-    "no-console": 0
+    "no-console": 0,
+    "import/no-dynamic-require": 0,
+    "global-require": 0
   }
 }

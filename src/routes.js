@@ -5,30 +5,34 @@
  * The map for this entire project .
  * @module routes
  */
-import Foo from './components/foo.vue'
-import Bar from './components/bar.vue'
-import Index from './components/index.vue'
-import PageError from './components/common/page_error.vue'
 
 export default [
   {
     path: '/bar',
-    component: Bar,
+    component(resolve) {
+      require(['./components/bar.vue'], resolve)
+    },
     name: 'Bar',
   },
   {
     path: '/foo',
-    component: Foo,
+    component(resolve) {
+      require(['./components/foo.vue'], resolve)
+    },
     name: 'Foo',
   },
   {
     path: '/',
-    component: Index,
+    component(resolve) {
+      require(['./components/index.vue'], resolve)
+    },
     name: 'Index',
   },
   {
     path: '*',
-    component: PageError,
+    component(resolve) {
+      require(['./components/common/page_error.vue'], resolve)
+    },
     name: 'PageError',
   },
 ]

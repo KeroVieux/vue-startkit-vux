@@ -384,3 +384,10 @@ $m-light:                  #f5f5f5;
     @extend .text-middle;
   }
 }
+
+.fade-fast-enter-active, .fade-fast-leave-active {
+  transition: opacity .25s
+}
+.fade-fast-enter, .fade-fast-leave-active {
+  opacity: 0
+}

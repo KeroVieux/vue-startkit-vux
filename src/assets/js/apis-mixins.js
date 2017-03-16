@@ -8,13 +8,46 @@
  *
  * @mixin
  */
-/* eslint-disable */
+import axios from 'axios'
+
 const ApiMixin = {
-  comment() {
-    return window.axios.get('http://azu.github.io/promises-book/json/comment.json')
+  async comment() {
+    try {
+      const req = await axios.get('comment.json')
+      if (req.data.error) {
+        this.$vux.toast.show({
+          type: 'text',
+          text: req.data.error,
+        })
+        return req.data.error
+      }
+      return req.data
+    } catch (err) {
+      this.$vux.toast.show({
+        type: 'text',
+        text: err.response.statusText,
+      })
+      return err
+    }
   },
-  people() {
-    return window.axios.get('http://azu.github.io/promises-book/json/people.json')
+  async people() {
+    try {
+      const req = await axios.get('people.json')
+      if (req.data.error) {
+        this.$vux.toast.show({
+          type: 'text',
+          text: req.data.error,
+        })
+        return req.data.error
+      }
+      return req.data
+    } catch (err) {
+      this.$vux.toast.show({
+        type: 'text',
+        text: err.response.statusText,
+      })
+      return err
+    }
   },
 }
 

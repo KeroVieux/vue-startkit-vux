@@ -1,19 +1,19 @@
 <template>
-  <card :header="{title:'我的钱包'}">
+  <card :header="{title:'功能展示'}">
     <div slot="content" class="">
       <grid>
-        <grid-item label="循环" v-for="i in 9" :key="i">
+        <grid-item link="/bar" label="slots使用">
           <img slot="icon" src="../../assets/images/logo.jpg">
         </grid-item>
-        <grid-item link="/component/cell" label="自定义1">
+        <grid-item :link="{ path: '/404'}" label="404页面">
           <img slot="icon" src="../../assets/images/logo.jpg">
         </grid-item>
-        <grid-item :link="{ path: '/component/cell'}" label="自定义2">
+        <grid-item @on-item-click="onItemClick">
           <img slot="icon" src="../../assets/images/logo.jpg">
+          <span slot="label">点击事件</span>
         </grid-item>
-        <grid-item link="/component/cell" @on-item-click="onItemClick">
+        <grid-item label="循环" v-for="i in 6" :key="i">
           <img slot="icon" src="../../assets/images/logo.jpg">
-          <span slot="label">自定义3</span>
         </grid-item>
       </grid>
     </div>
@@ -39,6 +39,10 @@
     },
     methods: {
       onItemClick() {
+        this.$vux.toast.show({
+          type: 'text',
+          text: '被戳了一下',
+        })
         console.log('1111')
       },
     },

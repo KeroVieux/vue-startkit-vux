@@ -5,7 +5,8 @@
  *
  * @mixin
  */
-const _ = window._
+const _ = require('lodash')
+
 const fnMixin = {
   /**
    * Get the query params from the URL
