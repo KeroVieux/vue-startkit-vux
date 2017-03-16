@@ -6,7 +6,7 @@
         {{msg | trim('_-')}}
       </cell>
       <cell title="filter使用">
-        {{num | multiply}}
+        {{num | multiply(3)}}
       </cell>
     </group>
     <div class="p-t-10"></div>

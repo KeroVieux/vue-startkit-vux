@@ -14,6 +14,18 @@ const fnMixin = {
   goBack() {
     history.back()
   },
+  LoadStyle(url) {
+    try {
+      document.createStyleSheet(url)
+    } catch (e) {
+      const cssLink = document.createElement('link')
+      cssLink.rel = 'stylesheet'
+      cssLink.type = 'text/css'
+      cssLink.href = url
+      const head = document.getElementsByTagName('head')[0]
+      head.appendChild(cssLink)
+    }
+  },
   /**
    * Get the query params from the URL
    * @returns {{}|*} like '123456789'
