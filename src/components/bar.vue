@@ -5,6 +5,9 @@
       <cell title="filter使用">
         {{msg | trim('_-')}}
       </cell>
+      <cell title="filter使用">
+        {{num | multiply}}
+      </cell>
     </group>
     <div class="p-t-10"></div>
     <group>
@@ -35,6 +38,7 @@
       return {
         data: null,
         msg: '-_-abc-_-',
+        num: 2,
       }
     },
     methods: {

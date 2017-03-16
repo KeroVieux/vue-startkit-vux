@@ -21,6 +21,12 @@ const FiltersMixin = {
     if (_.isNaN(value)) {
       return '不是正确的数值'
     }
+    if (!_.isNumber(addend)) {
+      addend = _.toNumber(addend)
+    }
+    if (_.isNaN(addend)) {
+      return '不是正确的数值'
+    }
     return _.add(value, addend)
   },
   subtract(value, subtrahend = 0) {
@@ -30,22 +36,40 @@ const FiltersMixin = {
     if (_.isNaN(value)) {
       return '不是正确的数值'
     }
+    if (!_.isNumber(subtrahend)) {
+      subtrahend = _.toNumber(subtrahend)
+    }
+    if (_.isNaN(subtrahend)) {
+      return '不是正确的数值'
+    }
     return _.subtract(value, subtrahend)
   },
-  multiply(value, multiplicand = 0) {
+  multiply(value, multiplicand = 1) {
     if (!_.isNumber(value)) {
       value = _.toNumber(value)
     }
     if (_.isNaN(value)) {
       return '不是正确的数值'
     }
+    if (!_.isNumber(multiplicand)) {
+      multiplicand = _.toNumber(multiplicand)
+    }
+    if (_.isNaN(multiplicand)) {
+      return '不是正确的数值'
+    }
     return _.multiply(value, multiplicand)
   },
-  divide(value, divisor = 0) {
+  divide(value, divisor = 1) {
     if (!_.isNumber(value)) {
       value = _.toNumber(value)
     }
     if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    if (!_.isNumber(divisor)) {
+      divisor = _.toNumber(divisor)
+    }
+    if (_.isNaN(divisor)) {
       return '不是正确的数值'
     }
     return _.divide(value, divisor)
@@ -57,6 +81,12 @@ const FiltersMixin = {
     if (_.isNaN(value)) {
       return '不是正确的数值'
     }
+    if (!_.isNumber(precision)) {
+      precision = _.toNumber(precision)
+    }
+    if (_.isNaN(precision)) {
+      return '不是正确的数值'
+    }
     return _.floor(value, precision)
   },
   round(value, precision = 0) {
@@ -66,6 +96,12 @@ const FiltersMixin = {
     if (_.isNaN(value)) {
       return '不是正确的数值'
     }
+    if (!_.isNumber(precision)) {
+      precision = _.toNumber(precision)
+    }
+    if (_.isNaN(precision)) {
+      return '不是正确的数值'
+    }
     return _.round(value, precision)
   },
   ceil(value, precision = 0) {
@@ -73,6 +109,12 @@ const FiltersMixin = {
       value = _.toNumber(value)
     }
     if (_.isNaN(value)) {
+      return '不是正确的数值'
+    }
+    if (!_.isNumber(precision)) {
+      precision = _.toNumber(precision)
+    }
+    if (_.isNaN(precision)) {
       return '不是正确的数值'
     }
     return _.ceil(value, precision)
@@ -115,6 +157,9 @@ const FiltersMixin = {
   truncate(value, options) {
     if (!_.isString(value)) {
       value = _.toString(value)
+    }
+    if (!_.isObject(options)) {
+      return '错误的参数'
     }
     return _.truncate(value, options)
   },
