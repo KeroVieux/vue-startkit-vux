@@ -12,6 +12,7 @@
 7. 在api-mixins.js中使用了async await , 并且做了错误处理
 8. 在index中的九宫格,有几个基础事件的例子
 9. router的组件定义,全部使用异步加载组件
+10. 在filters-mixins.js中,已经预先定义了一些常用的方法
 
 ## 开始开发
 1. 根目录下执行 yarn install
