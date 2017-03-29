@@ -5,7 +5,6 @@
  * @requires VueRouter
  * @requires VeeValidate
  * @requires Moment
- * @requires ./assets/js/validate-zh
  * @requires ./vuex/store
  * @requires vuex-router-sync.sync
  * @requires ./routes
