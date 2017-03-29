@@ -16,10 +16,8 @@ import axios from 'axios'
 import Vue from 'vue'
 import { ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin } from 'vux'
 import VueRouter from 'vue-router'
-import VeeValidate from 'vee-validate'
 import Moment from 'moment'
 import { sync } from 'vuex-router-sync'
-import VeeValidateCn from './assets/js/validate-zh'
 import fnMixin from './assets/js/fn-mixins'
 import store from './vuex/store'
 
@@ -45,16 +43,8 @@ const vueInit = () => {
   Vue.use(AlertPlugin)
   Vue.use(ConfirmPlugin)
   Vue.use(LoadingPlugin)
-  Vue.use(VeeValidate, {
-    locale: 'zh_CN',
-    dictionary: {
-      zh_CN: {
-        messages: VeeValidateCn,
-      },
-    },
-  })
 
-  axios.defaults.baseURL = 'http://azu.github.io/promises-book/json'
+  axios.defaults.baseURL = 'https://api.github.com'
   // axios.defaults.baseURL = globalArg.apiUrl
   // axios.defaults.headers.common['authorization'] = window.userToken || ''
   const router = new VueRouter({

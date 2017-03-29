@@ -11,41 +11,39 @@
 import axios from 'axios'
 
 const ApiMixin = {
-  async comment() {
-    try {
-      const req = await axios.get('comment.json')
-      if (req.data.error) {
-        this.$vux.toast.show({
-          type: 'text',
-          text: req.data.error,
-        })
-        return req.data.error
-      }
-      return req.data
-    } catch (err) {
+  handleReqError(req) {
+    if (req.data.error) {
       this.$vux.toast.show({
         type: 'text',
-        text: err.response.statusText,
+        text: req.data && req.data.error ? req.data.error : '未知错误',
       })
+    }
+    return req.data.error
+  },
+  handleCatchError(err) {
+    this.$vux.toast.show({
+      type: 'text',
+      text: err.response && err.response.statusText ? err.response.statusText : '未知错误',
+    })
+    return false
+  },
+  async usersList() {
+    try {
+      const req = await axios.get('users')
+      this.handleReqError(req)
+      return req.data
+    } catch (err) {
+      this.handleCatchError(err)
       return err
     }
   },
-  async people() {
+  async user(username) {
     try {
-      const req = await axios.get('people.json')
-      if (req.data.error) {
-        this.$vux.toast.show({
-          type: 'text',
-          text: req.data.error,
-        })
-        return req.data.error
-      }
+      const req = await axios.get(`users/${username}`)
+      this.handleReqError(req)
       return req.data
     } catch (err) {
-      this.$vux.toast.show({
-        type: 'text',
-        text: err.response.statusText,
-      })
+      this.handleCatchError(err)
       return err
     }
   },

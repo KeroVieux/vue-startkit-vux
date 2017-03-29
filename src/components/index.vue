@@ -26,6 +26,7 @@
   import Bulletin from './elements/bulletin.vue'
   import TableDefault from './common/table_default.vue'
   import MachinesError from './elements/machines_error.vue'
+  import ApisMixins from '../assets/js/apis-mixins'
 
   export default{
     components: {
@@ -39,5 +40,18 @@
         data: null,
       }
     },
+    created() {
+      const req = () => {
+        return Promise.all([this.usersList(), this.user('keroVieux')])
+      }
+      req().then((res) => {
+        const [resA, resB] = res
+        console.log('good resA', resA)
+        console.log('good resB', resB)
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    mixins: [ApisMixins],
   }
 </script>
