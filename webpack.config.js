@@ -42,6 +42,14 @@ const webpackConfig = {
         loader: 'css-loader',
       },
       {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
+      },
+      {
+        test: /\.scss/,
+        loader: 'style-loader!css-loader!sass-loader!postcss-loader'
+      },
+      {
         test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
         loader: 'url-loader?importLoaders=1&limit=100000',
       },

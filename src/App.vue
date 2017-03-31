@@ -8,9 +8,6 @@
     </transition>
   </div>
 </template>
-<style>
-  @import '../src/assets/sass/screen.css';
-</style>
 <!--suppress CssUnknownTarget -->
 <style lang="less">
   @import '~vux/src/styles/reset';

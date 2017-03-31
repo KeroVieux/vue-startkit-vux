@@ -16,9 +16,10 @@ import { ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin } from 'vux'
 import VueRouter from 'vue-router'
 import Moment from 'moment'
 import { sync } from 'vuex-router-sync'
+import 'vue2-animate/src/vue2-animate.less'
 import fnMixin from './assets/js/fn-mixins'
 import store from './vuex/store'
-
+import './assets/sass/screen.scss'
 import routes from './routes'
 import App from './App.vue'
 

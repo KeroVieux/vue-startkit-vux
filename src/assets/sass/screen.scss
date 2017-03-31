@@ -1,9 +1,16 @@
-@import "../../../node_modules/font-awesome/scss/font-awesome";
+@import "~font-awesome/scss/font-awesome";
+
 @import "../bootstrap/variables";
 @import "../bootstrap/mixins";
 @import "../bootstrap/tables";
 
-@import "bourbon/bourbon";
 @import "lib/mixin";
-@import "lib/basic";
-@import "lib/ie-warning";
+@import "lib/spacing";
+@import "lib/color";
+@import "lib/useful_class";
+@import "lib/rounded";
+@import "lib/extra_reset";
+@import "lib/ie_warning";
+.flex{
+  display: flex;
+}
