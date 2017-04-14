@@ -51,9 +51,7 @@ const vueInit = () => {
     routes,
   })
   sync(store, router)
-  _.assign(window, {
-    router,
-  })
+
   Vue.config.devtools = true
   const app = new Vue({
     store,

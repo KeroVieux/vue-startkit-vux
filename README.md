@@ -17,3 +17,7 @@
 ## 开始开发
 1. 根目录下执行 yarn install
 2. 根据package.json执行开发环境启动,如 run-script "dev dev"
+
+## 发布
+1. 根据package.json执行构建命令,如 run-script "build dev"
+2. 将splash.jpg/index.html和dist文件夹传到Apache或者iis里

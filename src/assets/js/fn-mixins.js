@@ -5,7 +5,6 @@
  *
  * @mixin
  */
-const _ = require('lodash')
 
 const fnMixin = {
   replaceAll(str, search, replacement) {

@@ -1,39 +1,33 @@
 <template>
   <div>
     <div class="m-b-10"></div>
-    <divider>重点事项</divider>
-    <Bulletin :data="data"></Bulletin>
+    <divider>示例</divider>
+    <Sample :data="data"></Sample>
     <div class="m-b-15"></div>
-    <divider>发电量总览</divider>
+    <divider>表格</divider>
     <div class="bg-white p-b-10">
-      <h4 class="m-0 n p-10 fz-14 c-red">火电</h4>
+      <h4 class="m-0 n p-10 fz-14 c-red">例子</h4>
       <TableDefault data=""></TableDefault>
     </div>
-    <div class="m-b-15"></div>
-    <div class="bg-white p-b-10">
-      <h4 class="m-0 n p-10 fz-14 c-green">新能源</h4>
-      <TableDefault data=""></TableDefault>
-    </div>
-    <div class="m-b-15"></div>
-    <divider>异常机组总览</divider>
+    <divider>组件</divider>
     <div class="m-b-10"></div>
-    <MachinesError></MachinesError>
+    <SwiperComponent></SwiperComponent>
     <div class="m-b-15"></div>
   </div>
 </template>
 <script type="text/babel">
   import { Divider } from 'vux'
-  import Bulletin from './elements/bulletin.vue'
+  import Sample from './elements/sample.vue'
   import TableDefault from './common/table_default.vue'
-  import MachinesError from './elements/machines_error.vue'
+  import SwiperComponent from './elements/swiper_component.vue'
   import ApisMixins from '../assets/js/apis-mixins'
 
   export default{
     components: {
       Divider,
-      Bulletin,
+      Sample,
       TableDefault,
-      MachinesError,
+      SwiperComponent,
     },
     data() {
       return {
@@ -41,6 +35,7 @@
       }
     },
     created() {
+      console.log('_', _.times(4, _.constant(0)))
       const req = () => {
         return Promise.all([this.usersList(), this.user('keroVieux')])
       }

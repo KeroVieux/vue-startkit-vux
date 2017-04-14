@@ -11,7 +11,7 @@
     </group>
     <div class="p-t-10"></div>
     <group>
-      <cell :title="item.name" @click.native="onClick" v-for="item in data"></cell>
+      <cell :title="item.login" @click.native="onClick" v-for="item in data"></cell>
     </group>
     <div class="p-t-10"></div>
     <ChildComponent>
@@ -25,8 +25,6 @@
   import ApisMixins from '../assets/js/apis-mixins'
   import FiltersMixins from '../assets/js/filters-mixins'
   import ChildComponent from './elements/child_component.vue'
-
-  const _ = require('lodash')
 
   export default{
     components: {
@@ -47,13 +45,10 @@
           type: 'text',
           text: '被戳了一下',
         })
-        console.log('1111')
       },
     },
     created() {
-      console.log('11', _.isNumber(NaN))
-      console.log('11', NaN + 1)
-      this.comment().then((res) => {
+      this.usersList().then((res) => {
         console.log('res', res)
         this.data = res
       })

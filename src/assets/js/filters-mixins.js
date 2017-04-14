@@ -9,9 +9,6 @@
  *
  * @mixin
  */
-import Moment from 'moment'
-
-const _ = require('lodash')
 
 const FiltersMixin = {
   add(value, addend = 0) {

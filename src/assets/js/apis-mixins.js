@@ -8,7 +8,6 @@
  *
  * @mixin
  */
-import axios from 'axios'
 
 const ApiMixin = {
   handleReqError(req) {
