@@ -5,6 +5,7 @@
  *
  * @mixin
  */
+const _ = require('lodash')
 
 const fnMixin = {
   replaceAll(str, search, replacement) {
@@ -24,6 +25,21 @@ const fnMixin = {
       const head = document.getElementsByTagName('head')[0]
       head.appendChild(cssLink)
     }
+  },
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+    const position = {}
+    if (to && to.hash) {
+      position.selector = to.hash
+      if (to.matched.some((m) => { return m.meta.scrollToTop })) {
+        position.x = 0
+        position.y = 0
+      }
+      return position
+    }
+    return false
   },
   /**
    * Get the query params from the URL
@@ -82,6 +98,9 @@ const fnMixin = {
         clearInterval(timer)
       }
     }, 50)
+  },
+  goToLink(url) {
+    this.$router.push(url)
   },
   /* eslint-disable */
   /**

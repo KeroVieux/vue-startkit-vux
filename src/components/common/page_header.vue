@@ -16,7 +16,6 @@
     },
     data() {
       return {
-        pageTitle: '顶部组件',
         pathName: null,
         acMenus: {
           menu1: 'Take Photo',
@@ -27,10 +26,10 @@
     },
     computed: {
       currentPath() {
-        return window.store.state.route.path
+        return this.$route.path
       },
       pageTitle() {
-        this.pathName = window.store.state.route.name
+        this.pathName = this.$route.name
         switch (this.pathName) {
           case 'Bar':
             return 'Bar'

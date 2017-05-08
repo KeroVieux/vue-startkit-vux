@@ -8,6 +8,11 @@ const mutations = {
       temporaryData: newSet,
     })
   },
+  allChartData(state, newSet) {
+    _.assign(state, {
+      allChartData: newSet,
+    })
+  },
 }
 
 export default mutations
