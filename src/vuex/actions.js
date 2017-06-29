@@ -11,7 +11,4 @@ export default {
   temporaryData({ commit }, newSet) {
     commit('temporaryData', newSet)
   },
-  allChartData({ commit }, newSet) {
-    commit('allChartData', newSet)
-  },
 }

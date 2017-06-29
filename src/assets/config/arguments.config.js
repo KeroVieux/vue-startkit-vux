@@ -2,7 +2,7 @@ export default {
   dev: {
     testingMode: true,
     env: 'dev',
-    apiUrl: 'http://xxx',
+    apiUrl: 'https://api.github.com',
     contextPatch: '',
     others: {
       a: 1,

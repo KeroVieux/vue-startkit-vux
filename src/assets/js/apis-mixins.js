@@ -13,10 +13,10 @@ import axios from 'axios'
 const ApiMixin = {
   handleReqError(req) {
     if (req.data.error) {
-      // this.$vux.toast.show({
-      //   type: 'text',
-      //   text: req.data && req.data.error ? req.data.error : '未知错误',
-      // })
+      this.$vux.toast.show({
+        type: 'text',
+        text: req.data && req.data.error ? req.data.error : '未知错误',
+      })
     }
     return req.data.error
   },
@@ -30,7 +30,9 @@ const ApiMixin = {
   async usersList() {
     try {
       const req = await axios.get('users')
-      this.handleReqError(req)
+      if (req.error) {
+        return this.handleReqError(req)
+      }
       return req.data
     } catch (err) {
       this.handleCatchError(err)
@@ -40,18 +42,10 @@ const ApiMixin = {
   async user(username) {
     try {
       const req = await axios.get(`users/${username}`)
-      this.handleReqError(req)
+      if (req.error) {
+        return this.handleReqError(req)
+      }
       return req.data
-    } catch (err) {
-      this.handleCatchError(err)
-      return err
-    }
-  },
-  async getChartData(url) {
-    const apiUrl = url || `${window.globalArg.testDataUrl}`
-    try {
-      const res = await axios.get(apiUrl)
-      return res.data
     } catch (err) {
       this.handleCatchError(err)
       return err

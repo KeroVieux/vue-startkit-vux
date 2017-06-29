@@ -7,9 +7,11 @@ import './assets/sass/screen.scss'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
-// import Config from './assets/config/arguments.config'
+import Config from './assets/config/arguments.config'
 
 const _ = require('lodash')
+
+const currentEnv = Config.dev
 
 Moment.locale('zh-CN')
 
@@ -19,20 +21,18 @@ _.assign(window, {
   store,
   Moment,
   axios,
-  rtpToken: null,
-  userToken: null,
-  currentUser: null,
+  currentEnv,
 })
 
-// axios.defaults.baseURL = Config.dev.apiUrl
-axios.defaults.baseURL = 'https://api.github.com'
-Vue.config.devtools = true
+axios.defaults.baseURL = currentEnv.apiUrl
+Vue.config.devtools = currentEnv.testingMode
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
 Vue.use(LoadingPlugin)
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
   components: { App },
