@@ -155,13 +155,19 @@ const FiltersMixin = {
    * {{data.body | truncate({'length': 24, 'separator': /,? +/, 'omission': ' [...]'})}}
    */
   truncate(value, options) {
+    const finalOpt = {
+      length: 24,
+      separator: /,? +/,
+      omission: ' [...]',
+    }
+    _.assign(finalOpt, options)
     if (!_.isString(value)) {
       value = _.toString(value)
     }
-    if (!_.isObject(options)) {
+    if (!_.isObject(finalOpt)) {
       return '错误的参数'
     }
-    return _.truncate(value, options)
+    return _.truncate(value, finalOpt)
   },
   trim(value, chars = null) {
     if (!_.isString(value)) {
