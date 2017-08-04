@@ -1,7 +1,9 @@
 /**
  * Created by PetitKero on 13/10/2016.
  */
+
 import queryString from 'query-string'
+
 /**
  * This provides mixins used for common api in the Vue components.
  * Before you begin to used it , plz inject this mixins in the components
