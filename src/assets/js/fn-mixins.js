@@ -5,7 +5,6 @@
  *
  * @mixin
  */
-const _ = require('lodash')
 
 const fnMixin = {
   replaceAll(str, search, replacement) {
@@ -43,41 +42,35 @@ const fnMixin = {
   },
   /**
    * Get the query params from the URL
-   * @returns {{}|*} like '123456789'
+   * @returns string
    * @example
-   * let token = urlParamToObj().rtp_token
+   * let token = urlParam('rtp_token')
    */
-  /* eslint-disable */
-  urlParamToObj() {
-    let fn = null
-    let item = null
-    let j = null
-    let len = null
-    let p = null
-    let sear = null
-    let u = null
-    if (location.search) {
-      u = location.search
-    } else {
-      u = location.href
-      u = u.slice(0, u.indexOf('#'))
+  urlParam(key) {
+    let name
+    let value
+    let str = location.href
+    const index1 = location.href.indexOf('?')
+    const index2 = location.href.indexOf('#')
+    if (index2 > index1) {
+      str = str.substring(0, index2)
     }
-    p = {}
-    if (u.indexOf('?') !== -1) {
-      sear = u.slice(u.indexOf('?') + 1).split('&')
-      fn = (item) => {
-        let s
-        s = item.split('=')
-        return p[s[0]] = s[1]
-      }
-      for (j = 0, len = sear.length; j < len; j++) {
-        item = sear[j]
-        fn(item)
+    let num = str.indexOf('?')
+    str = str.substr(num + 1)
+    const arr = str.split('&')
+    let argValue
+    for (let i = 0; i < arr.length; i += 1) {
+      num = arr[i].indexOf('=')
+      if (num > 0) {
+        name = arr[i].substring(0, num)
+        value = arr[i].substr(num + 1)
+        if (name === key) {
+          argValue = value
+        }
       }
     }
-    return p
+    return argValue
   },
-  /* eslint-enable */
   isArray(target) {
     if (_.isArray(target)) {
       return (target.length > 0)
@@ -102,7 +95,6 @@ const fnMixin = {
   goToLink(url) {
     this.$router.push(url)
   },
-  /* eslint-disable */
   /**
    * Replace the numerical to the ancient Chinese number
    * @param {number} n - number need to replaced
@@ -124,7 +116,7 @@ const fnMixin = {
     n = Math.abs(n)
     let s = ''
     for (let i = 0; i < fraction.length; i += 1) {
-      s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '')
+      s += (digit[Math.floor(n * 10 * (10 ** i)) % 10] + fraction[i]).replace(/零./, '')
     }
     s = s || '整'
     n = Math.floor(n)
@@ -140,7 +132,6 @@ const fnMixin = {
             .replace(/(零.)+/g, '零')
             .replace(/^整$/, '零元整')
   },
-  /* eslint-enable */
 }
 export default {
   methods: fnMixin,

@@ -19,5 +19,12 @@ export default new Router({
         require(['@/components/tables'], resolve)
       },
     },
+    {
+      path: '/error',
+      name: 'Error',
+      component(resolve) {
+        require(['@/components/common/page_error'], resolve)
+      },
+    },
   ],
 })

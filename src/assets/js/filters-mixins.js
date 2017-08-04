@@ -12,16 +12,14 @@ const FiltersMixin = {
    * {{data.author | isEmpty('管理员')}}
    */
   isEmpty(value, defaultText) {
-    let trimValue = _.trim(value)
+    const trimValue = _.trim(value)
     if (!trimValue) {
-      if(defaultText){
+      if (defaultText) {
         return defaultText
-      }else {
-        return '空'
       }
-    }else {
-      return trimValue
+      return '空'
     }
+    return trimValue
   },
   add(value, addend = 0) {
     if (!_.isNumber(value)) {

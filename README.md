@@ -1,8 +1,8 @@
-# vue-cli-281
+# vue-start-vux
 
-> A Vue.js project
+> 一个快速启动项目的脚手架，加入了很多常用的公共类。
 
-## Build Setup
+## 以下内容待完善
 
 ``` bash
 # install dependencies
@@ -26,5 +26,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

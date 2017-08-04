@@ -9,7 +9,7 @@
       </transition>
     </div>
     <div class="p-t-15 p-b-15 tc c-bluegray">
-      2011-2016 &copy; <a href="http://code.hidoge.cn" class="c-bluegray" target="_blank">hiDoge</a>
+      <span id="entryVconsole">2011-2016 <i class="fa fa-copyright"></i>  <a href="http://code.hidoge.cn" class="c-bluegray" target="_blank">hiDoge</a></span>
     </div>
   </div>
 </template>
