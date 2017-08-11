@@ -8,7 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-import ParallelUglifyPlugin from 'webpack-parallel-uglify-plugin'
+var ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
