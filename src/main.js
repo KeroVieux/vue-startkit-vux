@@ -8,6 +8,7 @@ import './assets/sass/screen.scss'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
+import fnMixin from './assets/js/fn-mixins'
 import Config from './assets/config/arguments.config'
 import ConsoleTrigger from './assets/config/consoleTrigger'
 
