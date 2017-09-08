@@ -12,29 +12,10 @@ $fa-font-path:        "//img.hidoge.cn/font-awesome/4.7.0/fonts/" !default;
   display: flex;
 }
 .container{
-  width: 90%;
+  padding:0 10px;
   @extend %auto;
   @include clearfix();
 }
 .box_shadow{
   box-shadow: 0 1px 1px black(.08);
-}
-.page_header{
-  .ivu-menu-horizontal{
-    height: 80px;
-    line-height: 80px;
-    &.ivu-menu-light{
-      &:after{
-        background: none !important;
-      }
-    }
-  }
-}
-.ivu-menu{
-  a{
-    color: #657180;
-  }
-  .ivu-menu-item-active a, .ivu-menu-item-selected a {
-    color: #3399ff;
-  }
 }

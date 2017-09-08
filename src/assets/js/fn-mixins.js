@@ -7,6 +7,18 @@
  */
 
 const fnMixin = {
+  /**
+   /* 生日转换为星座
+   /* @param mon 月份
+   /* @param day 日份（1-31）
+   /* @return string 对应日期生日的星座字符串
+   **/
+  constellation(mon, day) {
+    const s = '摩羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手摩羯'
+    const d = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22]
+    const i = (mon * 2) - (day < d[mon - 1] ? 2 : 0)
+    return `${s.substring(i, i + 2)}座`
+  },
   replaceAll(str, search, replacement) {
     return str.replace(new RegExp(search, 'g'), replacement)
   },
@@ -94,6 +106,106 @@ const fnMixin = {
   },
   goToLink(url) {
     this.$router.push(url)
+  },
+  /**
+   * Get the systemInfo
+   * @returns object
+   * @example
+   * const systemInfo = printSystemInfo()
+   */
+  printSystemInfo() {
+    const info = {}
+    const ua = navigator.userAgent
+    let logMsg = ''
+
+    const ipod = ua.match(/(ipod).*\s([\d_]+)/i)
+    const ipad = ua.match(/(ipad).*\s([\d_]+)/i)
+    const iphone = ua.match(/(iphone)\sos\s([\d_]+)/i)
+    const android = ua.match(/(android)\s([\d.]+)/i)
+
+    logMsg = 'Unknown'
+    if (android) {
+      logMsg = `Android ${android[2]}`
+    } else if (iphone) {
+      logMsg = `iPhone, iOS ${iphone[2].replace(/_/g, '.')}`
+    } else if (ipad) {
+      logMsg = `iPad, iOS ${ipad[2].replace(/_/g, '.')}`
+    } else if (ipod) {
+      logMsg = `iPod, iOS ${ipod[2].replace(/_/g, '.')}`
+    }
+    let templogMsg = logMsg
+    const version = ua.match(/MicroMessenger\/([\d.]+)/i)
+    logMsg = 'Unknown'
+    if (version && version[1]) {
+      logMsg = version[1]
+      templogMsg += (`, WeChat ${logMsg}`)
+      console.info('[system]', 'System:', templogMsg)
+    } else {
+      console.info('[system]', 'System:', templogMsg)
+    }
+    logMsg = 'Unknown'
+    if (location.protocol === 'https:') {
+      logMsg = 'HTTPS'
+    } else if (location.protocol === 'http:') {
+      logMsg = 'HTTP'
+    } else {
+      logMsg = location.protocol.replace(':', '')
+    }
+    templogMsg = logMsg
+    let network = ua.toLowerCase().match(/ nettype\/([^ ]+)/g)
+    logMsg = 'Unknown'
+    if (network && network[0]) {
+      network = network[0].split('/')
+      logMsg = network[1]
+      templogMsg += (`, ${logMsg}`)
+      info.Network = templogMsg
+    } else {
+      info.Protocol = templogMsg
+    }
+    info.UA = ua
+    setTimeout(() => {
+      const performance = window.performance || window.msPerformance || window.webkitPerformance
+
+      if (performance && performance.timing) {
+        const t = performance.timing
+        if (t.navigationStart) {
+          info.navigationStart = Moment(t.navigationStart).format()
+        }
+        if (t.navigationStart && t.domainLookupStart) {
+          info.navigation = `${(t.domainLookupStart - t.navigationStart)}ms`
+        }
+        if (t.domainLookupEnd && t.domainLookupStart) {
+          info.dns = `${(t.domainLookupEnd - t.domainLookupStart)}ms`
+        }
+        if (t.connectEnd && t.connectStart) {
+          if (t.connectEnd && t.secureConnectionStart) {
+            info.ssl = `${(t.connectEnd - t.connectStart)}ms (${(t.connectEnd - t.secureConnectionStart)}ms)`
+          } else {
+            info.tcp = `${(t.connectEnd - t.connectStart)}ms`
+          }
+        }
+        if (t.responseStart && t.requestStart) {
+          info.request = `${(t.responseStart - t.requestStart)}ms`
+        }
+        if (t.responseEnd && t.responseStart) {
+          info.response = `${(t.responseEnd - t.responseStart)}ms`
+        }
+        if (t.domComplete && t.domLoading) {
+          if (t.domContentLoadedEventStart && t.domLoading) {
+            info.domCompleteDomLoaded = `${(t.domComplete - t.domLoading)}ms (${(t.domContentLoadedEventStart - t.domLoading)}ms)`
+          } else {
+            info.domComplete = `${(t.domComplete - t.domLoading)}ms`
+          }
+        }
+        if (t.loadEventEnd && t.loadEventStart) {
+          info.loadEvent = `${(t.loadEventEnd - t.loadEventStart)}ms`
+        }
+        if (t.navigationStart && t.loadEventEnd) {
+          info.totalDOM = `${(t.loadEventEnd - t.navigationStart)}ms (${(t.domComplete - t.navigationStart)}ms)`
+        }
+      }
+    }, 0)
+    return info
   },
   /**
    * Replace the numerical to the ancient Chinese number

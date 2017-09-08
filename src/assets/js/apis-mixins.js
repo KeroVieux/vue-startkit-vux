@@ -13,6 +13,29 @@ import queryString from 'query-string'
  */
 
 const ApiMixin = {
+  async apiComments(arg = { method: 'get', params: {} }) {
+    let res = null
+    switch (arg.method) {
+      case 'post':
+        res = await axios.post(`${currentEnv.diningServer}/api/comments`, arg.params)
+        break
+      case 'patch':
+        res = await axios.patch(`${currentEnv.diningServer}/api/messages/${arg.params.related_message_id}/comments/${arg.params.comment_id}`, arg.params)
+        break
+      default:
+        res = await axios.get(`${currentEnv.diningServer}/api/messages/${arg.params && arg.params.message_id ? arg.params.message_id : ''}?${queryString.stringify(arg.params)}`)
+    }
+    return res.data
+  },
+  /**
+   /* 获取ldap用户信息
+   /* @param arg 用户参数{ depId: 'CR0032000059', oprId: 'ANXING' }
+   /* @return array 对应的用于信息
+   **/
+  async getLdapUsers(arg) {
+    const req = await axios.get(`/api/qy-wexin/ldap-users?${queryString.stringify(arg)}`)
+    return req.data
+  },
   handleReqError(req) {
     if (req.data.error) {
       this.$vux.toast.show({
@@ -25,39 +48,6 @@ const ApiMixin = {
   handleCatchError(err) {
     console.log('handleCatchError err', err)
     return false
-  },
-  async getUsers(arg) {
-    try {
-      const req = await axios.get(`/api/qy-wexin/ldap-users?${queryString.stringify(arg)}`)
-      return req.data
-    } catch (err) {
-      this.handleCatchError(err)
-      return err
-    }
-  },
-  async usersList() {
-    try {
-      const req = await axios.get('users')
-      if (req.error) {
-        return this.handleReqError(req)
-      }
-      return req.data
-    } catch (err) {
-      this.handleCatchError(err)
-      return err
-    }
-  },
-  async user(username) {
-    try {
-      const req = await axios.get(`users/${username}`)
-      if (req.error) {
-        return this.handleReqError(req)
-      }
-      return req.data
-    } catch (err) {
-      this.handleCatchError(err)
-      return err
-    }
   },
 }
 
