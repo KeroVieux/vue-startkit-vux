@@ -232,9 +232,9 @@ const fnMixin = {
     }
     s = s || '整'
     n = Math.floor(n)
-    for (let i = 0; i < unit[0].length && n > 0; i++) {
+    for (let i = 0; i < unit[0].length && n > 0; i += 1) {
       let p = ''
-      for (let j = 0; j < unit[1].length && n > 0; j++) {
+      for (let j = 0; j < unit[1].length && n > 0; j += 1) {
         p = digit[n % 10] + unit[1][j] + p
         n = Math.floor(n / 10)
       }

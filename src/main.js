@@ -2,6 +2,7 @@ import axios from 'axios'
 import Moment from 'moment'
 import Vue from 'vue'
 import { ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin } from 'vux'
+import _ from 'lodash'
 import LocalForage from 'localforage'
 import 'vue2-animate/src/vue2-animate.less'
 import './assets/sass/screen.scss'
@@ -12,15 +13,15 @@ import fnMixin from './assets/js/fn-mixins'
 import Config from './assets/config/arguments.config'
 import ConsoleTrigger from './assets/config/consoleTrigger'
 
-const _ = require('lodash')
-
 const currentEnv = Config.dev
 
 Moment.locale('zh-CN')
 if (currentEnv.DEBUG && fnMixin.methods.urlParam('vConsole') === 'true') {
   require('vconsole/dist/vconsole.min')
+  Vue.config.devtools = true
+} else {
+  ConsoleTrigger(false)
 }
-ConsoleTrigger(currentEnv.DEBUG)
 
 _.assign(window, {
   _,
@@ -33,7 +34,6 @@ _.assign(window, {
 })
 
 axios.defaults.baseURL = currentEnv.apiServer
-Vue.config.devtools = currentEnv.DEBUG
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
