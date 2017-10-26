@@ -32,22 +32,9 @@ const ApiMixin = {
    /* @param arg 用户参数{ depId: 'CR0032000059', oprId: 'ANXING' }
    /* @return array 对应的用于信息
    **/
-  async getLdapUsers(arg) {
+  async ldapInfo(arg) {
     const req = await axios.get(`/api/qy-wexin/ldap-users?${queryString.stringify(arg)}`)
     return req.data
-  },
-  handleReqError(req) {
-    if (req.data.error) {
-      this.$vux.toast.show({
-        type: 'text',
-        text: req.data && req.data.error ? req.data.error : '未知错误',
-      })
-    }
-    return req.data.error
-  },
-  handleCatchError(err) {
-    console.log('handleCatchError err', err)
-    return false
   },
 }
 

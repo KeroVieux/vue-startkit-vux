@@ -12,10 +12,16 @@ $fa-font-path:        "//img.hidoge.cn/font-awesome/4.7.0/fonts/" !default;
   display: flex;
 }
 .container{
-  padding:0 10px;
+  max-width: 980px;
+  padding: 0 10px;
   @extend %auto;
   @include clearfix();
 }
 .box_shadow{
   box-shadow: 0 1px 1px black(.08);
+}
+.bg_gradient{
+  background: #1a2980; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #1a2980, #26d0ce); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #1a2980, #26d0ce);
 }

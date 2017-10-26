@@ -16,6 +16,7 @@ import ConsoleTrigger from './assets/config/consoleTrigger'
 const currentEnv = Config.dev
 
 Moment.locale('zh-CN')
+LocalForage.setDriver(LocalForage.LOCALSTORAGE)
 if (currentEnv.DEBUG && fnMixin.methods.urlParam('vConsole') === 'true') {
   require('vconsole/dist/vconsole.min')
   Vue.config.devtools = true
@@ -33,7 +34,7 @@ _.assign(window, {
   currentEnv,
 })
 
-axios.defaults.baseURL = currentEnv.apiServer
+axios.defaults.baseURL = currentEnv.wxServer
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
