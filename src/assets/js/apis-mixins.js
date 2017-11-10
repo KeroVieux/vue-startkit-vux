@@ -28,12 +28,33 @@ const ApiMixin = {
     return res.data
   },
   /**
-   /* 获取ldap用户信息
-   /* @param arg 用户参数{ depId: 'CR0032000059', oprId: 'ANXING' }
-   /* @return array 对应的用于信息
-   **/
-  async ldapInfo(arg) {
-    const req = await axios.get(`/api/qy-wexin/ldap-users?${queryString.stringify(arg)}`)
+   * Generate the logs on server , when the user have done something sensitive with server requires,
+   * such like login/send msg/delete data.
+   * @param {object} params request_name, request_path, request_params, blablabla
+   * @returns {object} error or not
+   */
+  async sendLog(params) {
+    const res = await axios.post(`${currentEnv.logsUrl}/logs`, params)
+    return res.data
+  },
+  /**
+   * Get information of ldap user from server,
+   * ordinary for fetch a specific user's info
+   * @param {object} arg depId: 'CR0032000059', oprId: 'ANXING'
+   * @returns {object} object of user's info
+   */
+  async apiLdapUsers(arg) {
+    const req = await axios.get(`${currentEnv.wxServer}/api/qy-wexin/ldap-users?${queryString.stringify(arg)}`)
+    return req.data
+  },
+  /**
+   * Get information of wx user from server,
+   * ordinary for detect a user's auth when it entered app at once
+   * @param {object} params agentId, code, fake
+   * @returns {object} { error: null, ldapUserInfo: [], weixinUserInfo:{} }
+   */
+  async apiWxUser(params) {
+    const req = await axios.get(`${currentEnv.wxServer}/api/qy-wexin/user_detail?${queryString.stringify(params)}`)
     return req.data
   },
 }
