@@ -288,6 +288,10 @@ autosize@^3.0.20:
   version "3.0.20"
   resolved "http://registry.npm.taobao.org/autosize/download/autosize-3.0.20.tgz#e343ea7c5603834738169420f0349dc953e62a9e"
 
+await-to-js@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/await-to-js/download/await-to-js-2.0.1.tgz#fcb8a2178c763e2970aef1da9daf5c493e3653e0"
+
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/aws-sign2/download/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
