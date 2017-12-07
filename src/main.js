@@ -24,6 +24,12 @@ if (currentEnv.DEBUG && fnMixin.methods.urlParam('vConsole') === 'true') {
   ConsoleTrigger(false)
 }
 
+_.assign(Vue.prototype, {
+  _,
+  Moment,
+  currentEnv,
+})
+
 _.assign(window, {
   _,
   Vue,
@@ -45,5 +51,11 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
+})
+
+router.beforeEach((to, from, next) => {
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
+  next()
 })
 
