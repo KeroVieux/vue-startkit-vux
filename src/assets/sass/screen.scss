@@ -8,6 +8,13 @@ $fa-font-path:        "//img.hidoge.cn/font-awesome/4.7.0/fonts/" !default;
 @import "lib/rounded";
 @import "lib/extra_reset";
 @import "lib/ie_warning";
+div{
+  word-wrap: break-word;
+  word-break: normal;
+}
+img{
+  max-width: 100%;
+}
 .flex{
   display: flex;
 }

@@ -7,16 +7,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Tables',
-      component(resolve) {
-        require(['@/components/Hello'], resolve)
-      },
+      redirect: '/hello',
     },
     {
       path: '/hello',
       name: 'Hello',
       component(resolve) {
-        require(['@/components/tables'], resolve)
+        require(['@/components/Hello'], resolve)
       },
     },
     {

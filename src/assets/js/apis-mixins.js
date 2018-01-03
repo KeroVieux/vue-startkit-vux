@@ -14,6 +14,15 @@ import To from 'await-to-js'
  */
 
 const ApiMixin = {
+  async apiSendMsg(token, params) {
+    const instance = axios.create({
+      headers: {
+        Authorization: token,
+      },
+    })
+    const [err, req] = await To(instance.post(`${currentEnv.wxServer}/api/weixin-news-msgs`, params))
+    return this.globalCB(err, req)
+  },
   async apiArticles(arg = { method: 'get', params: {} }) {
     let [err, req] = [null, null]
     switch (arg.method) {
@@ -60,21 +69,21 @@ const ApiMixin = {
   },
   globalCB(err, req) {
     if (err) {
-      this.$vux.toast.show({
-        type: 'text',
-        text: _.toString(err),
+      this.$vux.alert.show({
+        title: '提示',
+        content: _.toString(err),
       })
       return { error: _.toString(err) }
     } else if (req && req.data && req.data.status === 401) {
-      this.$vux.toast.show({
-        type: 'text',
-        text: '请先登录',
+      this.$vux.alert.show({
+        title: '提示',
+        content: '请先登录',
       })
       this.$router.push('/entrances/signin')
     } else if (req && req.data && req.data.error) {
-      this.$vux.toast.show({
-        type: 'text',
-        text: _.toString(req.data.error),
+      this.$vux.alert.show({
+        title: '提示',
+        content: _.toString(req.data.error),
       })
     }
     return req.data
