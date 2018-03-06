@@ -17,10 +17,13 @@ const currentEnv = Config.dev
 
 Moment.locale('zh-CN')
 LocalForage.setDriver(LocalForage.LOCALSTORAGE)
-if (currentEnv.DEBUG && fnMixin.methods.urlParam('vConsole') === 'true') {
-  require('vconsole/dist/vconsole.min')
+if (currentEnv.DEBUG || fnMixin.methods.urlParam('console') === 'true') {
+  if ((/micromessenger/i).test(navigator.userAgent)) {
+    require('vconsole/dist/vconsole.min')
+  }
   Vue.config.devtools = true
 } else {
+  Vue.config.devtools = false
   ConsoleTrigger(false)
 }
 
