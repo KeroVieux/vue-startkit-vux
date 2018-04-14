@@ -1,0 +1,23 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "source": {
+    "exclude": [ "static" ],
+    "include": [ "src" ],
+    "includePattern": "\\.(vue|js)$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["node_modules/jsdoc-vue"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "opts": {
+    "template": "templates/default",
+    "encoding": "utf8",
+    "destination": "./jsdoc/",
+    "recurse": true
+  }
+}
